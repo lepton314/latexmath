@@ -29,15 +29,18 @@ for formula in fixed_formulas:
             parsed_elements.append({'mode': 'function','name': 'cos'})
         elif '\\tan' in elements:
             parsed_elements.append({'mode': 'function','name': 'tan'})
+        elif '+' in elements:
+            parsed_elements.append({'mode':'operator','name':'+'})
+        elif '-' in elements:
+            parsed_elements.append({'mode':'operator','name':'-'})
+        elif '=' in elements:
+            parsed_elements.append({'mode':'equal','name':'='})
         else:
             parsed_elements.append({'mode': 'number','value': element})
             parsed_formulas.append(parsed_elements)
     
 #xmlに変換
 #mathmls = []
-for formulas in parsed_formulas:
-    if 'mode' in formulas.keys('number'):
+#for formulas in parsed_formulas:
+ #   if 'mode' in formulas.keys('number'):
         
-
-
-
