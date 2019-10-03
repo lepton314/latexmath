@@ -1,5 +1,5 @@
 import re
-#import xml.etree.ElementTree as et
+import xml.etree.ElementTree as et
 
 #ファイル読み込み
 with open('input.tex','r') as f:
@@ -29,18 +29,24 @@ for formula in fixed_formulas:
             parsed_elements.append({'mode': 'function','name': 'cos'})
         elif '\\tan' in elements:
             parsed_elements.append({'mode': 'function','name': 'tan'})
-        elif '+' in elements:
-            parsed_elements.append({'mode':'operator','name':'+'})
-        elif '-' in elements:
-            parsed_elements.append({'mode':'operator','name':'-'})
-        elif '=' in elements:
-            parsed_elements.append({'mode':'equal','name':'='})
+        elif '\+' in elements:
+            parsed_elements.append({'mode': 'operator','name': '\+'})
+        elif '\-' in elements:
+            parsed_elements.append({'mode': 'operator','name': '\-'})
+        elif '\=' in elements:
+            parsed_elements.append({'mode': 'equal','name': '\='})
         else:
             parsed_elements.append({'mode': 'number','value': element})
             parsed_formulas.append(parsed_elements)
-    
 #xmlに変換
-#mathmls = []
-#for formulas in parsed_formulas:
- #   if 'mode' in formulas.keys('number'):
-        
+mathmls = []
+math = et.Element('math')
+tree = et.ElementTree(element=math)
+for formulas in parsed_formulas:
+    if 'operator' in formulas.keys('mode'):
+        operator = et.SubElement(math,'mo')
+        mo.text = formulas.get('name')
+    elif 'number' in formulas.keys('mode'):
+        if str.isdecimal(formulas.get('value'):
+            number = et.SubElement(math,'mn'):
+            mn.text = formulas.get('value')
