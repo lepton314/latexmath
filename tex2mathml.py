@@ -24,18 +24,22 @@ for formula in fixed_formulas:
     print(elements)
     parsed_elements = []
     for element in elements:
-        if '\\sin' in elements:
+        if '\(' in elements:
+            parsed_elements.append({'mode': 'operator1','name': '\('})
+        elif '\)' in elements:
+            parsed_elements.append({'mode': 'operator1','name': '\)'})
+        elif '\\sin' in elements:
             parsed_elements.append({'mode': 'function','name': 'sin'})
         elif '\\cos' in elements:
             parsed_elements.append({'mode': 'function','name': 'cos'})
         elif '\\tan' in elements:
             parsed_elements.append({'mode': 'function','name': 'tan'})
         elif '\+' in elements:
-            parsed_elements.append({'mode': 'operator','name': '\+'})
+            parsed_elements.append({'mode': 'operator2','name': '\+'})
         elif '\pm' in elements:
-            parsed_elements.append({'mode': 'operator','name': '\+'})
+            parsed_elements.append({'mode': 'operator2','name': '\+'})
         elif '\-' in elements:
-            parsed_elements.append({'mode': 'operator','name': '\-'})
+            parsed_elements.append({'mode': 'operator2','name': '\-'})
         elif '=' in elements:
             parsed_elements.append({'mode': 'equal','name': '='})
         else:
@@ -49,10 +53,13 @@ mathmls = []
 math = et.Element('math')
 tree = et.ElementTree(element=math)
 for formulas in parsed_formulas:
-    if 'operator' in formulas.get('mode'):　#演算子
+    #括弧などの特殊処理
+    if 'operator1' in formulas.get('mode'): 
+    #括弧閉じが来るまでループさせる
+    if 'operator2' in formulas.get('mode'):　#演算子
         operator = et.SubElement(math,'mo')
         operator.text = formulas.get('name')
-    if 'equal' in formulas.get('mode'):　#演算子
+    elif 'equal' in formulas.get('mode'):　#演算子
         equal = et.SubElement(math,'mo')
         equal.text = formulas.get('name')
     elif 'number' in formulas.get('mode'): #英数字
