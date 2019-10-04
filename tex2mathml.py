@@ -293,34 +293,118 @@ for formula in fixed_formulas:
             parsed_elements.append({'mode': 'symbol','tag':'mo','name': '\u224D'})      
         elif '\\notin' in elements:
             parsed_elements.append({'mode': 'symbol','tag':'mo','name': '\u2209'})
-        #ギリシャ文字
-        elif '' in elements:
-            parsed_elements.append({'mode': 'symbol','tag':'mo','name': ''})
-        elif '' in elements:
-            parsed_elements.append({'mode': 'symbol','tag':'mo','name': ''})
-        elif '' in elements:
-            parsed_elements.append({'mode': 'symbol','tag':'mo','name': ''})      
-        elif '' in elements:
-            parsed_elements.append({'mode': 'symbol','tag':'mo','name': ''})
-        elif '' in elements:
-            parsed_elements.append({'mode': 'symbol','tag':'mo','name': ''})
-        elif '' in elements:
-            parsed_elements.append({'mode': 'symbol','tag':'mo','name': ''})
-        elif '' in elements:
-            parsed_elements.append({'mode': 'symbol','tag':'mo','name': ''})
-        elif '' in elements:
-            parsed_elements.append({'mode': 'symbol','tag':'mo','name': ''})
-        elif '' in elements:
-            parsed_elements.append({'mode': 'symbol','tag':'mo','name': ''})      
-        elif '' in elements:
-            parsed_elements.append({'mode': 'symbol','tag':'mo','name': ''})
-        elif '' in elements:
-            parsed_elements.append({'mode': 'symbol','tag':'mo','name': ''})
-        elif '' in elements:
-            parsed_elements.append({'mode': 'symbol','tag':'mo','name': ''})
-        elif '' in elements:
-            parsed_elements.append({'mode': 'symbol','tag':'mo','name': ''})
-
+        #特殊文字
+        elif '\\alpha' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03B1'})
+        elif '\\beta' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03B2'})
+        elif '\\gamma' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03B3'})      
+        elif '\\delta' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03B4'})
+        elif '\\epsilon' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03B5'})
+        elif '\\varepsilon' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u025B'})
+        elif '\\zeta' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03B6'})
+        elif '\\eta' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03B7'})
+        elif '\\theta' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03B8'})      
+        elif '\\vartheta' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03D1'})
+        elif '\\iota'' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03B9'})
+        elif '\\kappa' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03BA'})
+        elif '\\lambda' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03BB'})
+        elif '\\mu' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03BC'})
+        elif '\\nu' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03BD'})
+        elif '\\xi' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03BE'})      
+        elif '\\pi' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03C0'})
+        elif '\\varpi' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03D6'})
+        elif '\\rho' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03C1'})
+        elif '\\varrho' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03F1'})
+        elif '\\varsigma' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03C2'})
+        elif '\\sigma' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03C3'})      
+        elif '\\tau' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03C4'})
+        elif '\\upsilon' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03C5'})
+        elif '\\phi' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03C6'})
+        elif '\\varphi' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03D5'})
+        elif '\\chi' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03C7'})
+        elif '\\psi' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03C8'})
+        elif '\\omega' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03C9'})      
+        elif '\\Gamma' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mo','name': '\u0393'})
+        elif '\\Delta' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mo','name': '\u0394'})
+        elif '\\Theta' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mo','name': '\u0398'})
+        elif '\\Lambda' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mo','name': '\u039B'})
+        elif '\\Xi' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mo','name': '\u039E'})
+        elif '\\Pi' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mo','name': '\u03A0'})      
+        elif '\\Sigma' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mo','name': '\u03A3'})
+        elif '\\Upsilon' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mo','name': '\u03A5'})
+        elif '\\Phi' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mo','name': '\u03A6'})
+        elif '\\Psi' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mo','name': '\u03A8'})
+        elif '\\Omega' in elements:
+            parsed_elements.append({'mode': 'characters','tag':'mo','name': '\u03A9'})
+        #分数
+        elif '\\frac12' in elements:
+            parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u00BD'})
+        elif '\\frac14' in elements:
+            parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u00BC'})
+        elif '\\frac34' in elements:
+            parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u00BE'})
+        elif '\\frac13' in elements:
+            parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u2153'})
+        elif '\\frac23' in elements:
+            parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u2154'})
+        elif '\\frac15' in elements:
+            parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u2155'})
+        elif '\\frac25' in elements:
+            parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u2156'})
+        elif '\\frac35' in elements:
+            parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u2157'})
+        elif '\\frac45' in elements:
+            parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u2158'})
+        elif '\\frac16' in elements:
+            parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u2159'})
+        elif '\\frac56' in elements:
+            parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u215A'})
+        elif '\\frac18' in elements:
+            parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u215B'})
+        elif '\\frac38' in elements:
+            parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u215C'})
+        elif '\\frac58' in elements:
+            parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u215D'})
+        elif '\\frac78' in elements:        elif '\\frac25' in elements:
+            parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u215E'})
         #英数字
         else:
             parsed_elements.append({'mode': 'number','value': element})
