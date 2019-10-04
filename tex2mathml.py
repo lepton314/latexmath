@@ -403,8 +403,52 @@ for formula in fixed_formulas:
             parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u215C'})
         elif '\\frac58' in elements:
             parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u215D'})
-        elif '\\frac78' in elements:        elif '\\frac25' in elements:
+        elif '\\frac78' in elements:
             parsed_elements.append({'mode': 'frac','tag':'mo','name': '\u215E'})
+        #矢印
+        elif '\\gets' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u2910'})
+        elif '\\leftarrow' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u2190'})
+        elif '\\to' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u2192'})            
+        elif '\\rightarrow' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u2192'})
+        elif '\\leftrightarrows' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u2194'})
+        elif '\\uparrow' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u2191'})            
+        elif '\\downarrow' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u2193'})
+        elif '\\updownarrow' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u2195'})
+        elif '\\Leftarrow' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u21D0'})            
+        elif '\\Rightarrow' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u21D2'})
+        elif '\\Leftrightarrow' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u21D4'})
+        elif '\\Uparrow' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u21D1'})            
+        elif '\\Downarrow' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u21D3'})
+        elif '\\mapsto' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u21D5'})
+        elif '\\longleftarrow' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u21A6'})            
+        elif '\\longrightarrow' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u2190'})
+        elif '\\longleftrightarrow' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u2192'})
+        elif '\\Longleftarrow' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u21D0'})            
+        elif '\\Longrightarrow' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u21D2'})
+        elif '\\Longleftrightarrow' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u21D4'})
+        elif '\\Longmapsto' in elements:
+            parsed_elements.append({'mode': 'arrows','tag':'mo','name': '\u21A6'})            
+        
         #英数字
         else:
             parsed_elements.append({'mode': 'number','value': element})
