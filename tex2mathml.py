@@ -29,6 +29,26 @@ for formula in fixed_formulas:
             parsed_elements.append({'mode': 'operator1','name': '\('})
         elif '\)' in elements:
             parsed_elements.append({'mode': 'operator1','name': '\)'})
+        elif '\\sqrt' in elements:
+            parsed_elements.append({'mode': 'sqrt','tag':'msqrt','name': 'sqrt'})  
+        elif '\\root' in elements:
+            parsed_elements.append({'mode': 'root','tag':'mroot','name': 'root'})    
+        elif '\\frac' in elements:
+            parsed_elements.append({'mode': 'frac','tag':'mfrac','name': '/'})
+        elif '\\stackrel' in elements:
+            parsed_elements.append({'mode': 'stackrel','tag':'mover','name': 'stakrel'})  
+        elif '\\atop' in elements:
+            parsed_elements.append({'mode': 'atop','tag':'mfrac','name': ''})    
+        elif '\\choose' in elements:
+            parsed_elements.append({'mode': 'choose','tag':'mfrac','name': ''})
+        elif '_' in elements:                                 
+            parsed_elements.append({'mode': 'sub','tag':'msub','name': '_'})
+        elif '^' in elements:
+            parsed_elements.append({'mode': 'sup','tag':'msup','name': '^'})  
+        elif '\\mathrm' in elements:
+            parsed_elements.append({'mode': 'text','tag':'text','name': '\)'})    
+        elif '\\mbox' in elements:
+            parsed_elements.append({'mode': 'mbox','tag':'mbox','name': '\)'})
         #関数
         elif '\\arccos' in elements:
             parsed_elements.append({'mode': 'function','tag':'mi','name': 'arccos'})
@@ -175,33 +195,33 @@ for formula in fixed_formulas:
             parsed_elements.append({'mode': 'operator2','tag':'mo','name': '\u22B5'})
         #演算子3
         elif '\\sum' in elements:
-            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '','type':'underover'})
+            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '\u2211','type':'underover'})
         elif '\\prod' in elements:
-            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '','type':'underover'})
+            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '\u220F','type':'underover'})
         elif '\\bigcap' in elements:
-            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '','type':'underover'})
+            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '\u22C2','type':'underover'})
         elif '\\bigwedge' in elements:
-            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '','type':'underover'})
+            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '\u22C3','type':'underover'})
         elif '\\bigvee' in elements:
-            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '','type':'underover'})
+            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '\u22C0','type':'underover'})
         elif '\\bigsqcap' in elements:
-            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '','type':'underover'})
+            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '\u22C1','type':'underover'})
         elif '\\bigsqcup' in elements:
-            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '','type':'underover'})
+            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '\u2A05','type':'underover'})
         elif '\\coprod' in elements:
-            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '','type':'underover'})
+            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '\u2A06','type':'underover'})
         elif '\\bigoplus' in elements:
-            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '','type':'underover'})
+            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '\u2A01','type':'underover'})
         elif '\\bigotimes' in elements:
-            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '','type':'underover'})
+            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '\u2A02','type':'underover'})
         elif '\\bigodot' in elements:
-            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '','type':'underover'})
+            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '\u2A00','type':'underover'})
         elif '\\biguplus' in elements:
-            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '','type':'underover'})      
+            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '\u2A04','type':'underover'})      
         elif '\\int' in elements:
-            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '','type':'underover'})
+            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '\u222B'})
         elif '\\oint' in elements:
-            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '','type':'underover'})
+            parsed_elements.append({'mode': 'operator3','tag':'mo','name': '\u222E'})
         #二項関係記号
         elif '=' in elements:
             parsed_elements.append({'mode': 'symbol','tag':'mo','name': '='})
