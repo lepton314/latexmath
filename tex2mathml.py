@@ -343,7 +343,7 @@ for formula in fixed_formulas:
             parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03B8'})      
         elif '\\vartheta' in elements:
             parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03D1'})
-        elif '\\iota'' in elements:
+        elif '\\iota' in elements:
             parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03B9'})
         elif '\\kappa' in elements:
             parsed_elements.append({'mode': 'characters','tag':'mi','name': '\u03BA'})
@@ -489,17 +489,17 @@ for formula in fixed_formulas:
 mathmls = []
 math = et.Element('math')
 tree = et.ElementTree(element=math)
+brakets = 0
 for formulas in parsed_formulas:
     #括弧などの特殊処理
     if 'brakets1' in formulas.get('mode'):
-        brackets += 1
+        brakets += 1
     elif 'brakets2' in formulas.get('mode'):
         brakets -= 1
     elif 'sqrt' in formulas.get('mode'):
         sqrtcount += 1
 
-    elif
-        brakcets = 1
+    elif brakets == 0:
             if 'operator2' in formulas.get('mode'):　#演算子
                 operator = et.SubElement(math,'mo')
                 operator.text = formulas.get('name')
