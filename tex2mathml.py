@@ -18,29 +18,38 @@ parsed_formulas = []
 for formula in fixed_formulas:
 
     trimmed_formula = re.sub('\s','',formula)
-    elements = re.sub('(\+|-|=|\(|\))',r'/\1/',trimmed_formula).split('/')
+    elements = re.sub('(\+|-|=|\(|\)|\{|\}|_|^)',r'/\1/',trimmed_formula).split('/')
     print(formula)
     print(trimmed_formula)
     print(elements)
     parsed_elements = []
     for element in elements:
-        #演算子1
+        #brakets
         if '\(' in elements:
             parsed_elements.append({'mode': 'brakets1','name': '\('})
         elif '\)' in elements:
             parsed_elements.append({'mode': 'brackets2','name': '\)'})
+        elif '\{' in elements:
+            parsed_elements.append({'mode': 'brackets3','name': '\{'})
+        elif '\}' in elements:
+            parsed_elements.append({'mode': 'brackets4','name': '\}'})
+        elif '\[' in elements:
+            parsed_elements.append({'mode': 'brackets5','name': '\['})
+        elif '\]' in elements:
+            parsed_elements.append({'mode': 'brackets6','name': '\]'})                              
+        #括弧が必要なやつなど
         elif '\\sqrt' in elements:
-            parsed_elements.append({'mode': 'sqrt','tag':'msqrt','name': 'sqrt'})  
+            parsed_elements.append({'mode': 'sqrt','tag':'msqrt'})  
         elif '\\root' in elements:
-            parsed_elements.append({'mode': 'root','tag':'mroot','name': 'root'})    
+            parsed_elements.append({'mode': 'root','tag':'mroot'})    
         elif '\\frac' in elements:
-            parsed_elements.append({'mode': 'frac','tag':'mfrac','name': '/'})
+            parsed_elements.append({'mode': 'frac','tag':'mfrac'})
         elif '\\stackrel' in elements:
-            parsed_elements.append({'mode': 'stackrel','tag':'mover','name': 'stakrel'})  
+            parsed_elements.append({'mode': 'stackrel','tag':'mover'})  
         elif '\\atop' in elements:
-            parsed_elements.append({'mode': 'atop','tag':'mfrac','name': ''})    
+            parsed_elements.append({'mode': 'atop','tag':'mfrac'})    
         elif '\\choose' in elements:
-            parsed_elements.append({'mode': 'choose','tag':'mfrac','name': ''})
+            parsed_elements.append({'mode': 'choose','tag':'mfrac'})
         elif '_' in elements:                                 
             parsed_elements.append({'mode': 'sub','tag':'msub','name': '_'})
         elif '^' in elements:
@@ -484,29 +493,29 @@ for formulas in parsed_formulas:
     #括弧などの特殊処理
     if 'brakets1' in formulas.get('mode'):
         brackets += 1
-    elif 'brakets1' in formulas.get('mode'):
+    elif 'brakets2' in formulas.get('mode'):
         brakets -= 1
     elif 'sqrt' in formulas.get('mode'):
-        sqrt = et.SubElement(math,'sqrt')
-    
-    #括弧閉じが来るまでループさせる
-    elif 
-        if 'operator2' in formulas.get('mode'):　#演算子
-            operator = et.SubElement(math,'mo')
-            operator.text = formulas.get('name')
-        elif 'number' in formulas.get('mode'): #英数字
-            if str.isdecimal(formulas.get('value')):#数字のみ
-                number = et.SubElement(math,'mn')
-                mn.text = formulas.get('value')
-            else:
-                temp = re.search(r'\d+',forlamus.get('value')) #混在した場合の数字の取り出し。
-                number = et.SubElement(math,'mn')
-                mn.text = temp
-                temp2 = list(re.search('[^0-9]+',forlamus.get('value')))#英字部分取り出し
-            for String in temp2:
-                Inti = et.SubElement(math,'mo')
-                Inti.text = '&InvisibleTimes;'
-                string = et.SubElement(math,'mi')
-                string.text = String
+        sqrtcount += 1
+
+    elif
+        brakcets = 1
+            if 'operator2' in formulas.get('mode'):　#演算子
+                operator = et.SubElement(math,'mo')
+                operator.text = formulas.get('name')
+            elif 'number' in formulas.get('mode'): #英数字
+                if str.isdecimal(formulas.get('value')):#数字のみ
+                    number = et.SubElement(math,'mn')
+                    mn.text = formulas.get('value')
+                else:
+                    temp = re.search(r'\d+',forlamus.get('value')) #混在した場合の数字の取り出し。
+                    number = et.SubElement(math,'mn')
+                    mn.text = temp
+                    temp2 = list(re.search('[^0-9]+',forlamus.get('value')))#英字部分取り出し
+                for String in temp2:
+                    Inti = et.SubElement(math,'mo')
+                    Inti.text = '&InvisibleTimes;'
+                    string = et.SubElement(math,'mi')
+                    string.text = String
         
-tree.write('test.xml', encoding='utf-8', xml_declaration=True) #
+tree.write('test.xml', encoding='utf-8', xml_declaration=True) #xmlとしての書き出し
