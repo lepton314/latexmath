@@ -26,9 +26,9 @@ for formula in fixed_formulas:
     for element in elements:
         #演算子1
         if '\(' in elements:
-            parsed_elements.append({'mode': 'operator1','name': '\('})
+            parsed_elements.append({'mode': 'brakets1','name': '\('})
         elif '\)' in elements:
-            parsed_elements.append({'mode': 'operator1','name': '\)'})
+            parsed_elements.append({'mode': 'brackets2','name': '\)'})
         elif '\\sqrt' in elements:
             parsed_elements.append({'mode': 'sqrt','tag':'msqrt','name': 'sqrt'})  
         elif '\\root' in elements:
@@ -482,7 +482,13 @@ math = et.Element('math')
 tree = et.ElementTree(element=math)
 for formulas in parsed_formulas:
     #括弧などの特殊処理
-    if 'operator1' in formulas.get('mode'): 
+    if 'brakets1' in formulas.get('mode'):
+        brackets += 1
+    elif 'brakets1' in formulas.get('mode'):
+        brakets -= 1
+    elif 'sqrt' in formulas.get('mode'):
+        sqrt = et.SubElement(math,'sqrt')
+    
     #括弧閉じが来るまでループさせる
     elif 
         if 'operator2' in formulas.get('mode'):　#演算子
