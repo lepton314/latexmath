@@ -497,11 +497,11 @@ for formulas in parsed_formulas:
     elif 'brakets2' in formulas.get('mode'):
         brakets -= 1
     elif 'brakets3' in formulas.get('mode'):
-        sqrtcount += 1
+        brakets += 1
     elif 'brakets4' in formulas.get('mode'):
         brakets -= 1
     elif 'brakets5' in formulas.get('mode'):
-        sqrtcount += 1
+        brakets += 1
     elif 'brakets6' in formulas.get('mode'):
         brakets -= 1
     elif 'sqrt' in formulas.get('mode'):
@@ -515,7 +515,7 @@ for formulas in parsed_formulas:
     elif '^' in formulas.get('mode'):
         supcount += 1        
     elif brakets == 0:
-            if 'operator2' in formulas.get('mode'):　#演算子
+            if 'operator2' in formulas.get('mode'):#演算子
                 operator = et.SubElement(math,'mo')
                 operator.text = formulas.get('name')
             elif 'number' in formulas.get('mode'): #英数字
