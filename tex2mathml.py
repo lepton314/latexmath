@@ -481,8 +481,8 @@ for formula in fixed_formulas:
         #英数字
         else:
             parsed_elements.append({'mode': 'number','value': element})
-            parsed_formulas.append(parsed_elements)
-    print(parsed_formulas)
+        parsed_formulas.append(parsed_elements)
+        print(parsed_formulas)
 
 
 #xmlに変換
@@ -518,6 +518,11 @@ for formulas in parsed_formulas:
             if 'operator2' in formulas.get('mode'):#演算子
                 operator = et.SubElement(math,'mo')
                 operator.text = formulas.get('name')
+            elif 'funciton' in formulas.get('mode'):
+                function = et.SubElement(math,'mi')
+                function.text = formulas.get('name')
+                Inti = et.SubElement(math,'mo')
+                Inti.text = '&InvisibleTimes;'
             elif 'number' in formulas.get('mode'): #英数字
                 if str.isdecimal(formulas.get('value')):#数字のみ
                     number = et.SubElement(math,'mn')
@@ -533,4 +538,4 @@ for formulas in parsed_formulas:
                     string = et.SubElement(math,'mi')
                     string.text = String
         
-tree.write('test.xml', encoding='utf-8', xml_declaration=True) #xmlとしての書き出し
+et.write('test.xml', encoding='utf-8', xml_declaration=True) #xmlとしての書き出し
