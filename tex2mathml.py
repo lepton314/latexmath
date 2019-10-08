@@ -496,9 +496,24 @@ for formulas in parsed_formulas:
         brakets += 1
     elif 'brakets2' in formulas.get('mode'):
         brakets -= 1
+    elif 'brakets3' in formulas.get('mode'):
+        sqrtcount += 1
+    elif 'brakets4' in formulas.get('mode'):
+        brakets -= 1
+    elif 'brakets5' in formulas.get('mode'):
+        sqrtcount += 1
+    elif 'brakets6' in formulas.get('mode'):
+        brakets -= 1
     elif 'sqrt' in formulas.get('mode'):
         sqrtcount += 1
-
+    elif 'root' in formulas.get('mode'):
+        rootcount += 1
+    elif 'frac' in formulas.get('mode'):
+        fraccount += 1
+    elif '_' in formulas.get('mode'):
+        subcount += 1
+    elif '^' in formulas.get('mode'):
+        supcount += 1        
     elif brakets == 0:
             if 'operator2' in formulas.get('mode'):　#演算子
                 operator = et.SubElement(math,'mo')
@@ -508,10 +523,10 @@ for formulas in parsed_formulas:
                     number = et.SubElement(math,'mn')
                     mn.text = formulas.get('value')
                 else:
-                    temp = re.search(r'\d+',forlamus.get('value')) #混在した場合の数字の取り出し。
+                    temp = re.search(r'\d+',formulas.get('value')) #混在した場合の数字の取り出し。
                     number = et.SubElement(math,'mn')
                     mn.text = temp
-                    temp2 = list(re.search('[^0-9]+',forlamus.get('value')))#英字部分取り出し
+                    temp2 = list(re.search('[^0-9]+',formulas.get('value')))#英字部分取り出し
                 for String in temp2:
                     Inti = et.SubElement(math,'mo')
                     Inti.text = '&InvisibleTimes;'
