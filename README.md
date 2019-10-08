@@ -1,1 +1,1 @@
-# latexmath
+# tex2math

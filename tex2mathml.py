@@ -487,8 +487,8 @@ for formula in fixed_formulas:
 
 #xmlに変換
 mathmls = []
-math = et.Element('math')
-tree = et.ElementTree(element=math)
+root = et.Element('math')
+tree = et.ElementTree(element=root)
 brakets = 0
 for formulas in parsed_formulas:
     #括弧などの特殊処理
@@ -538,4 +538,4 @@ for formulas in parsed_formulas:
                     string = et.SubElement(math,'mi')
                     string.text = String
         
-et.write('test.xml', encoding='utf-8', xml_declaration=True) #xmlとしての書き出し
+tree.write('test.xml', encoding='utf-8', xml_declaration=True) #xmlとしての書き出し
