@@ -36,37 +36,48 @@ for formula in fixed_formulas:
 #Subformula
 built_formulas = []
 built_formula = []
+sub_formula = {}
+brakets_a = 0
+brakets_b = 0
+brakets_c = 0
 for formula in parsed_formulas:
     for element in formula:
-        built_formula.append(element)
+        if 'brakets1' in element['mode']:
+            brakets_a += 1
+        elif brakets_a >= 1:
+            sub_formula[brakets_a].append(element)
+        elif 'brakets2' in element['mode']:
+            built_formula.append({'mode': 'subformula','tag': 'mrow','value':sub_formula[brakets_a]})
+            brakets_a -= 1
+        elif 'brakets3' in element['mode']:
+            brakets_b += 1
+        elif brakets_b >= 1:
+            sub_formula[brakets_b].append(element)
+        elif 'brakets4' in element['mode']:
+            built_formula.append({'mode': 'subformula','tag': '\{\}','value':sub_formula[brakets_b]})
+            brakets_b -= 1
+        elif 'brakets5' in element['mode']:
+            brakets_c += 1
+        elif brakets_c >= 1:
+            sub_formula[brakets_c].append(element)
+        elif 'brakets4' in element['mode']:
+            built_formula.append({'mode': 'subformula','tag': '\[\]','value':sub_formula[brakets_c]})
+            brakets_c -= 1
+        else:
+            built_formula.append(element)
     print(formula) 
     print(built_formula)
     built_formulas.append(built_formula)
+    
 #xmlに変換
 xmlcount = 0
 for formula in parsed_formulas:
     root = et.Element('math')
-    tree = et.ElementTree(element=root)
-    brakets = 0
+    tree = et.ElementTree(element=root)    
     IVcount = 0
     for element in formula:
-        #括弧などの特殊処理
-        if 'brakets1' in element['mode']:
-            if brakets == 0:
-                braket = et.SubElement(root,'mfenced')
-                braketop = et.SubElement(braket,'mrow')
-            brakets += 1
-        elif 'brakets2' in element['mode']:
-            brakets -= 1
-        elif 'brakets3' in element['mode']:
-            brakets += 1
-        elif 'brakets4' in element['mode']:
-            brakets -= 1
-        elif 'brakets5' in element['mode']:
-            brakets += 1
-        elif 'brakets6' in element['mode']:
-            brakets -= 1
-        elif 'sqrt' in element['mode']:
+        #括弧などが必要なものの特殊処理
+        if 'sqrt' in element['mode']:
             sqrtcount += 1
             sqrt = et.SubElement(root,'msqrt')
         elif 'root' in element['mode']:
@@ -77,7 +88,7 @@ for formula in parsed_formulas:
             subcount += 1
         elif 'sup' in element['mode']:
             supcount += 1        
-        elif brakets == 0:
+        else:
             if 'operator2' in element['mode']:#演算子
                 IVcount = 0
                 operator = et.SubElement(root,'mo')
