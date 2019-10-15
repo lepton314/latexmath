@@ -2,7 +2,7 @@
 import re
 import xml.etree.ElementTree as et
 from parse import parse_element
-
+from subformula import makesubformula
 #ファイル読み込み
 with open('input.tex','r') as f:
     raw_text = f.read()
@@ -33,6 +33,8 @@ for formula in fixed_formulas:
         parse_element(element, parsed_elements)
     parsed_formulas.append(parsed_elements)
     print(parsed_formulas)
+
+
 #Subformula
 built_formulas = []
 built_formula = []
@@ -42,36 +44,14 @@ brakets_b = 0
 brakets_c = 0
 for formula in parsed_formulas:
     for element in formula:
-        if 'brakets1' in element['mode']:
-            brakets_a += 1
-        elif brakets_a >= 1:
-            sub_formula[brakets_a].append(element)
-        elif 'brakets2' in element['mode']:
-            built_formula.append({'mode': 'subformula','tag': 'mrow','value':sub_formula[brakets_a]})
-            brakets_a -= 1
-        elif 'brakets3' in element['mode']:
-            brakets_b += 1
-        elif brakets_b >= 1:
-            sub_formula[brakets_b].append(element)
-        elif 'brakets4' in element['mode']:
-            built_formula.append({'mode': 'subformula','tag': '\{\}','value':sub_formula[brakets_b]})
-            brakets_b -= 1
-        elif 'brakets5' in element['mode']:
-            brakets_c += 1
-        elif brakets_c >= 1:
-            sub_formula[brakets_c].append(element)
-        elif 'brakets4' in element['mode']:
-            built_formula.append({'mode': 'subformula','tag': '\[\]','value':sub_formula[brakets_c]})
-            brakets_c -= 1
-        else:
-            built_formula.append(element)
+        makesubformula(element,sub_formula,brakets_a,brakets_b,brakets_c)
     print(formula) 
     print(built_formula)
     built_formulas.append(built_formula)
     
 #xmlに変換
 xmlcount = 0
-for formula in parsed_formulas:
+for formula in built_formulas:
     root = et.Element('math')
     tree = et.ElementTree(element=root)    
     IVcount = 0
@@ -107,6 +87,7 @@ for formula in parsed_formulas:
                 number = et.SubElement(root,'mn')
                 number.text = element['value']
                 IVcount += 1
+            elif 'subformula' in element['mode']
             else:
                 if IVcount >= 1: 
                     Inti = et.SubElement(root,'mo')
