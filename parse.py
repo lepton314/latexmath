@@ -1,17 +1,17 @@
 def parse_element(element, parsed_elements):
     #brakets
-    if '\(' == element:
-        parsed_elements.append({'mode': 'brakets1','name': '\('})
-    elif '\)' == element:
-        parsed_elements.append({'mode': 'brackets2','name': '\)'})
-    elif '\{' == element:
-        parsed_elements.append({'mode': 'brackets3','name': '\{'})
-    elif '\}' == element:
-        parsed_elements.append({'mode': 'brackets4','name': '\}'})
-    elif '\[' == element:
-        parsed_elements.append({'mode': 'brackets5','name': '\['})
-    elif '\]' == element:
-        parsed_elements.append({'mode': 'brackets6','name': '\]'})                              
+    if '(' == element:
+        parsed_elements.append({'mode': 'brackets1','name': '('})
+    elif ')' == element:
+        parsed_elements.append({'mode': 'brackets2','name': ')'})
+    elif '{' == element:
+        parsed_elements.append({'mode': 'brackets3','name': '{'})
+    elif '}' == element:
+        parsed_elements.append({'mode': 'brackets4','name': '}'})
+    elif '[' == element:
+        parsed_elements.append({'mode': 'brackets5','name': '['})
+    elif ']' == element:
+        parsed_elements.append({'mode': 'brackets6','name': ']'})                              
     #括弧が必要なやつなど
     elif '\\sqrt' == element:
         parsed_elements.append({'mode': 'sqrt','tag':'msqrt'})  

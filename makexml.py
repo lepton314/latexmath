@@ -1,19 +1,35 @@
 import xml.etree.ElementTree as et
-root = et.Element('math')
-tree = et.ElementTree(element=root)
-
-function = et.SubElement(root, 'mi')
-
-fruit = et.SubElement(function, 'fruit')
-fruit_id = et.SubElement(function, 'name')
-fruit_id.text = 'apple'
-fruit_id = et.SubElement(function, 'price')
-fruit_id.text = '100'
-
-fruit = et.SubElement(function, 'fruit')
-fruit_id = et.SubElement(function, 'name')
-fruit_id.text = 'orange'
-fruit_id = et.SubElement(function, 'price')
-fruit_id.text = '200'
-
-tree.write('fruits.xml', encoding='utf-8', xml_declaration=True)
+def makexml(formula,parent):
+    IVcount = 0
+    for element in formula:
+        if 'subformula' in element['mode'] and '1' == element['tag']:
+            brakets_a = et.SubElement(parent,'mfenced')
+            brakets_b = et.SubElement(brakets_a,'mrow')
+            makexml(element['children'],brakets_b)
+        elif 'operator2' in element['mode']:#演算子
+            IVcount = 0
+            operator = et.SubElement(parent,'mo')
+            operator.text = element['name']
+        elif 'function' == element['mode']:
+            IVcount = 0
+            function = et.SubElement(parent,'mi')
+            function.text = element['name']
+            Inti = et.SubElement(parent,'mo')
+            Inti.text = '&InvisibleTimes;'
+        elif 'symbol'in element['mode']: #二項関係記号
+            IVcount = 0
+            symbol = et.SubElement(parent,'mo')
+            symbol.text = element['name']
+        elif 'number' in element['mode']: #数字
+            number = et.SubElement(parent,'mn')
+            number.text = element['value']
+            IVcount += 1
+        else:
+            if IVcount >= 1: 
+                Inti = et.SubElement(parent,'mo')
+                Inti.text = '&#x2062;<!--INVISIBLE TIMES-->'
+                IVcount -= 1
+            else:    
+                characters = et.SubElement(parent,'mi')
+                characters.text = element['value']
+                IVcount += 1       
