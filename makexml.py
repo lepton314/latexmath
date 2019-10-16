@@ -2,10 +2,17 @@ import xml.etree.ElementTree as et
 def makexml(formula,parent):
     IVcount = 0
     for element in formula:
-        if 'subformula' in element['mode'] and '1' == element['tag']:
-            brakets_a = et.SubElement(parent,'mfenced')
-            brakets_b = et.SubElement(brakets_a,'mrow')
-            makexml(element['children'],brakets_b)
+        if 'sqrt' in element['mode']:
+            sqrt = et.SubElement(parent,'msqrt')
+            brakets = et.SubElement(sqrt,'mrow')
+            tag = brakets
+        elif 'subformula' in element['mode']:
+            if '1' == element['tag']:
+                brakets_a = et.SubElement(parent,'mfenced')
+                brakets_b = et.SubElement(brakets_a,'mrow')
+                makexml(element['children'],brakets_b)
+            elif '2' == element['tag']:
+                makexml(element['children'],tag)
         elif 'operator2' in element['mode']:#演算子
             IVcount = 0
             operator = et.SubElement(parent,'mo')
