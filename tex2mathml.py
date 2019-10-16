@@ -37,18 +37,15 @@ for formula in fixed_formulas:
 
 #Subformula
 built_formulas = []
-built_formula = []
-sub_formula = {}
-brakets_a = 0
-brakets_b = 0
-brakets_c = 0
 for formula in parsed_formulas:
-    for element in formula:
-        makesubformula(element,sub_formula,brakets_a,brakets_b,brakets_c)
+    modified_formula, _ = makesubformula(formula)
     print(formula) 
-    print(built_formula)
-    built_formulas.append(built_formula)
-    
+    print(modified_formula)
+    built_formulas.append(modified_formula)
+
+import json
+print(json.dumps(built_formulas))
+
 #xmlに変換
 xmlcount = 0
 for formula in built_formulas:
@@ -62,12 +59,13 @@ for formula in built_formulas:
             sqrt = et.SubElement(root,'msqrt')
         elif 'root' in element['mode']:
             rootcount += 1
+            
         elif 'frac' in element['mode']:
             fraccount += 1
         elif 'sub' in element['mode']:
             subcount += 1
         elif 'sup' in element['mode']:
-            supcount += 1        
+            supcount += 1
         else:
             if 'operator2' in element['mode']:#演算子
                 IVcount = 0
@@ -87,7 +85,6 @@ for formula in built_formulas:
                 number = et.SubElement(root,'mn')
                 number.text = element['value']
                 IVcount += 1
-            elif 'subformula' in element['mode']
             else:
                 if IVcount >= 1: 
                     Inti = et.SubElement(root,'mo')
