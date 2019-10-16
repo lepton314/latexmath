@@ -4,6 +4,7 @@ import xml.etree.ElementTree as et
 from parse import parse_element
 from subformula import makesubformula
 from makexml import makexml
+
 #ファイル読み込み
 with open('input.tex','r') as f:
     raw_text = f.read()
@@ -43,10 +44,12 @@ for formula in parsed_formulas:
     print(formula) 
     print(modified_formula)
     built_formulas.append(modified_formula)
+
 #xmlに変換
 xmlcount = 0
 for formula in built_formulas:
-    root = et.Element('math　xmlns="http://www.w3.org/1998/Math/MathML"')
+    root = et.Element('math')
+    
     tree = et.ElementTree(element=root)    
     makexml(formula,root)     
     xmlcount += 1
