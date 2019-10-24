@@ -1,2 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<math><mi>sin</mi><mo>&amp;InvisibleTimes;</mo><mi>x</mi><mn>30</mn><mo>&amp;#x2062;&lt;!--INVISIBLE TIMES--&gt;</mo><mi>x</mi><mo>+</mo><mn>50</mn><mo>=</mo><mn>200</mn><mi>sin</mi><mo>&amp;InvisibleTimes;</mo><mi>x</mi><mo>+</mo><mi>cos</mi><mo>&amp;InvisibleTimes;</mo><mi>y</mi><mo>=</mo><mn>1</mn></math>
+<math>
+<mi>\neg</mi>
+<mfenced>
+    <mrow><mi>P</mi><mo>∨</mo><mi>Q</mi></mrow></mfenced><mo>=</mo><mi>\nge</mi><mo>&amp;#x2062;&lt;!--INVISIBLE TIMES--&gt;</mo><mi>P</mi><mo>∧</mo><mi>\neg</mi><mo>&amp;#x2062;&lt;!--INVISIBLE TIMES--&gt;</mo><mi>Q</mi></math>

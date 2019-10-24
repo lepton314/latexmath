@@ -206,6 +206,8 @@ def parse_element(element, parsed_elements):
         parsed_elements.append({'mode': 'operator3','tag':'mo','name': '\u222B'})
     elif '\\oint' == element:
         parsed_elements.append({'mode': 'operator3','tag':'mo','name': '\u222E'})
+    elif '\\backslash' == element:
+        parsed_elements.append({'mode': 'operator3','tag':'mo','name': '\u2216'})       
     #二項関係記号
     elif '=' == element:
         parsed_elements.append({'mode': 'symbol','tag':'mo','name': '='})
