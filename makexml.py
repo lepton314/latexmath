@@ -1,81 +1,121 @@
 import xml.etree.ElementTree as et
 sqrtcount = 0
 fraccount = 0
-def makexml(formula,parent):
+
+
+def makexml(formula, parent):
     IVcount = 0
     global sqrtcount
     global fraccount
     for element in formula:
-        if 'sqrt' in element['mode']:
+        if 'indexkey1' in element and 'sub' == element['indexkey1']:
+            sub = et.SubElement(parent, 'msub')
+            if 'function' == element['mode']:
+                function = et.SubElement(sub, 'mi')
+                function.text = element['name']
+                makexml(element['indexvalue1'], sub)
+                Inti = et.SubElement(parent, 'mo')
+                Inti.text = '\u2062'
+            else:
+                subelement = {}
+                for key, value in element.items():
+                    if key == 'indexkey1':
+                        continue
+                    subelement[key] = value
+                makexml([subelement], sub)
+                makexml(element['indexvalue1'], sub)
+        elif 'indexkey2' in element and 'sup' == element['indexkey2']:
+            sup = et.SubElement(parent, 'msup')
+            if 'function' == element['mode']:
+                function = et.SubElement(sup, 'mi')
+                function.text = element['name']
+                makexml(element['indexvalue2'], sup)
+                Inti = et.SubElement(parent, 'mo')
+                Inti.text = '\u2062'
+            else:
+                subelement = {}
+                for key, value in element.items():
+                    if key == 'indexkey2':
+                        continue
+                    subelement[key] = value
+                makexml([subelement], sup)
+                makexml(element['indexvalue2'], sup)
+        elif 'sqrt' == element['mode']:
             sqrtcount += 2
-        elif 'frac' in element['mode']:
+        elif 'frac' == element['mode']:
             fraccount += 2
-            frac = et.SubElement(parent,'mfrac')
-        elif 'subformula' in element['mode']:
+            frac = et.SubElement(parent, 'mfrac')
+        elif 'subformula' == element['mode']:
             if '1' == element['tag']:
-                brakets_a = et.SubElement(parent,'mfenced')
-                brakets_b = et.SubElement(brakets_a,'mrow')
-                makexml(element['children'],brakets_b)
+                brakets_a = et.SubElement(parent, 'mfenced')
+                brakets_b = et.SubElement(brakets_a, 'mrow')
+                makexml(element['children'], brakets_b)
             elif '2' == element['tag']:
                 if sqrtcount == 2:
                     sqrtcount -= 2
-                    sqrt = et.SubElement(parent,'msqrt')
-                    brakets = et.SubElement(sqrt,'mrow')
-                    makexml(element['children'],brakets)
+                    sqrt = et.SubElement(parent, 'msqrt')
+                    brakets = et.SubElement(sqrt, 'mrow')
+                    makexml(element['children'], brakets)
                 elif sqrtcount == 1:
                     sqrtcount -= 1
-                    makexml(element['children'],mroot)
-                elif fraccount == 2: 
+                    brakets = et.SubElement(mroot, 'mrow')
+                    makexml(element['children'], brakets)
+                elif fraccount > 0:
                     fraccount -= 1
-                    makexml(element['children'],frac)
+                    brakets = et.SubElement(frac, 'mrow')
+                    makexml(element['children'], brakets)
+                else:
+                    brakets = et.SubElement(parent, 'mrow')
+                    makexml(element['children'], brakets)
             elif '3' == element['tag']:
-                if sqrtcount == 2:
-                    sqrtcount -=1
-                    mroot = et.SubElement(parent,'mroot')
-                    makexml(element['children'],mroot)                    
-        elif 'operator2' in element['mode']:#演算子
+                sqrtcount -= 1
+                mroot = et.SubElement(parent, 'mroot')
+                brakets = et.SubElement(mroot, 'mrow')
+                makexml(element['children'], brakets)
+        elif 'operator2' == element['mode']:  # 演算子
             IVcount = 0
-            operator = et.SubElement(parent,'mo')
+            operator = et.SubElement(parent, 'mo')
             operator.text = element['name']
-        elif 'operator3' in element['mode']:#演算子
+        elif 'operator3' == element['mode']:  # 演算子
             IVcount = 0
-            operator = et.SubElement(parent,'mo')
+            operator = et.SubElement(parent, 'mo')
             operator.text = element['name']
         elif 'function' == element['mode']:
             IVcount = 0
-            function = et.SubElement(parent,'mi')
+            function = et.SubElement(parent, 'mi')
             function.text = element['name']
-            Inti = et.SubElement(parent,'mo')
-            Inti.text = '&InvisibleTimes;'
-        elif 'symbol'in element['mode']: #二項関係記号
+
+            Inti = et.SubElement(parent, 'mo')
+            Inti.text = '\u2062'
+        elif 'symbol' == element['mode']:  # 二項関係記号
             IVcount = 0
-            symbol = et.SubElement(parent,'mo')
+            symbol = et.SubElement(parent, 'mo')
             symbol.text = element['name']
-        elif 'frac'in element['mode']: #二項関係記号
+        elif 'frac' == element['mode']:  # 二項関係記号
             IVcount = 0
-            symbol = et.SubElement(parent,'mo')
+            symbol = et.SubElement(parent, 'mo')
             symbol.text = element['name']
-        elif 'greek'in element['mode']: #二項関係記号
+        elif 'greek' == element['mode']:  # 二項関係記号
             IVcount = 0
-            symbol = et.SubElement(parent,'mo')
+            symbol = et.SubElement(parent, 'mo')
             symbol.text = element['name']
-        elif 'arrows'in element['mode']: #二項関係記号
+        elif 'arrows' == element['mode']:  # 二項関係記号
             IVcount = 0
-            symbol = et.SubElement(parent,'mo')
-            symbol.text = element['name']             
-        elif 'number' in element['mode']: #数字
-            number = et.SubElement(parent,'mn')
-            number.text = element['value']
+            symbol = et.SubElement(parent, 'mo')
+            symbol.text = element['name']
+        elif 'number' == element['mode']:  # 数字
+            number = et.SubElement(parent, 'mn')
+            number.text = element['name']
             IVcount += 1
         else:
-            if IVcount >= 1: 
-                Inti = et.SubElement(parent,'mo')
-                Inti.text = '&#x2062;<!--INVISIBLE TIMES-->'
+            if IVcount >= 1:
+                Inti = et.SubElement(parent, 'mo')
+                Inti.text = '\u2062'
                 IVcount -= 1
-                characters = et.SubElement(parent,'mi')
-                characters.text = element['value']
+                characters = et.SubElement(parent, 'mi')
+                characters.text = element['name']
                 IVcount += 1
-            else:    
-                characters = et.SubElement(parent,'mi')
-                characters.text = element['value']
+            else:
+                characters = et.SubElement(parent, 'mi')
+                characters.text = element['name']
                 IVcount += 1

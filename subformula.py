@@ -21,6 +21,13 @@ def makesubformula(formula):
                 'mode': 'subformula','tag':'2',
                 'children': sub_built
             })
+        elif 'brackets3-v' in element['mode']:
+            sub_built, sub_rack = makesubformula(input_formula)
+            input_formula = sub_rack
+            built_formula.append({
+                'mode': 'subformula','tag':'2',
+                'children': sub_built
+            })
         elif 'brackets5' in element['mode']:
             sub_built, sub_rack = makesubformula(input_formula)
             input_formula = sub_rack
@@ -28,7 +35,7 @@ def makesubformula(formula):
                 'mode': 'subformula','tag':'3',
                 'children': sub_built
             })
-        elif 'brackets2' in element['mode'] or 'brackets4' in element['mode'] or 'brackets6' in element['mode']:
+        elif 'brackets2' in element['mode'] or 'brackets4' in element['mode'] or 'brackets4-v' in element['mode'] or 'brackets6' in element['mode']:
             rack_elements = input_formula
             break
         else:

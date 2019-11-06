@@ -1,5 +1,2 @@
 <?xml version='1.0' encoding='utf-8'?>
-<math>
-<mi>\neg</mi>
-<mfenced>
-    <mrow><mi>P</mi><mo>∨</mo><mi>Q</mi></mrow></mfenced><mo>=</mo><mi>\nge</mi><mo>&amp;#x2062;&lt;!--INVISIBLE TIMES--&gt;</mo><mi>P</mi><mo>∧</mo><mi>\neg</mi><mo>&amp;#x2062;&lt;!--INVISIBLE TIMES--&gt;</mo><mi>Q</mi></math>
+<math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow></msqrt></math>

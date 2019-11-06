@@ -1,2 +1,2 @@
 <?xml version='1.0' encoding='utf-8'?>
-<math><mo>∫</mo><mfenced><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow></mfenced><mi>d</mi><mo>&amp;#x2062;&lt;!--INVISIBLE TIMES--&gt;</mo><mi>x</mi></math>
+<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>log</mi><mi>a</mi></msub><mo>⁢</mo><mi>MN</mi><mo>=</mo><msub><mi>log</mi><mi>a</mi></msub><mo>⁢</mo><mi>M</mi><mo>+</mo><msub><mi>log</mi><mi>a</mi></msub><mo>⁢</mo><mi>N</mi></math>

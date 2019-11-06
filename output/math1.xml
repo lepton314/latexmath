@@ -1,2 +1,2 @@
 <?xml version='1.0' encoding='utf-8'?>
-<math><mfenced><mrow><mn>100</mn><mo>&amp;#x2062;&lt;!--INVISIBLE TIMES--&gt;</mo><mi>x</mi><mo>+</mo><mfenced><mrow><mn>40</mn><mo>&amp;#x2062;&lt;!--INVISIBLE TIMES--&gt;</mo><mi>x</mi><mo>-</mo><mn>10</mn></mrow></mfenced></mrow></mfenced><mo>=</mo><mn>20</mn></math>
+<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>=</mo><mfrac><mrow><mo>-</mo><mi>b</mi><mo>±</mo><msqrt><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>-</mo><mn>4</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>c</mi></mrow></msqrt></mrow><mrow><mn>2</mn><mo>⁢</mo><mi>a</mi></mrow></mfrac></math>

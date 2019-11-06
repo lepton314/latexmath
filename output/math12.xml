@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>p</mi><mo>∨</mo><mfenced><mrow><mi>q</mi><mo>∧</mo><mi>r</mi></mrow></mfenced><mo>=</mo><mfenced><mrow><mi>p</mi><mo>∨</mo><mi>q</mi></mrow></mfenced><mo>∧</mo><mfenced><mrow><mi>p</mi><mo>∨</mo><mi>r</mi></mrow></mfenced></math>
