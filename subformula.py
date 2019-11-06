@@ -25,7 +25,7 @@ def makesubformula(formula):
             sub_built, sub_rack = makesubformula(input_formula)
             input_formula = sub_rack
             built_formula.append({
-                'mode': 'subformula','tag':'2',
+                'mode': 'subformula','tag':'4',
                 'children': sub_built
             })
         elif 'brackets5' in element['mode']:

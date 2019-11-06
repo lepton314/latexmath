@@ -72,6 +72,10 @@ def makexml(formula, parent):
                 mroot = et.SubElement(parent, 'mroot')
                 brakets = et.SubElement(mroot, 'mrow')
                 makexml(element['children'], brakets)
+            elif '4' == element['tag']:
+                brakets_a = et.SubElement(parent, 'mfenced',{'open':"{"},{'close':"}"})
+                brakets_b = et.SubElement(brakets_a, 'mrow')
+                makexml(element['children'], brakets_b)
         elif 'operator2' == element['mode']:  # 演算子
             IVcount = 0
             operator = et.SubElement(parent, 'mo')

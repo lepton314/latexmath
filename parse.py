@@ -303,6 +303,8 @@ def parse_element(element, parsed_elements):
         parsed_elements.append({'mode': 'symbol', 'tag': 'mo', 'name': '>'})
     elif '\\ne' == element:
         parsed_elements.append({'mode': 'symbol', 'tag': 'mo', 'name': '\u2260'})
+    elif '\\neg' == element:
+        parsed_elements.append({'mode': 'symbol', 'tag': 'mo', 'name': '\u00AC'})
     elif '\\neq' == element:
         parsed_elements.append(
             {'mode': 'symbol', 'tag': 'mo', 'name': '\u2260'})

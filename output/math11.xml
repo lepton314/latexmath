@@ -1,2 +1,2 @@
 <?xml version='1.0' encoding='utf-8'?>
-<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>\neg</mi><mfenced><mrow><mi>P</mi><mo>∨</mo><mi>Q</mi></mrow></mfenced><mo>=</mo><mi>\neg</mi><mo>⁢</mo><mi>P</mi><mo>∧</mo><mi>\neg</mi><mo>⁢</mo><mi>Q</mi></math>
+<math xmlns="http://www.w3.org/1998/Math/MathML"><mo>¬</mo><mfenced><mrow><mi>P</mi><mo>∨</mo><mi>Q</mi></mrow></mfenced><mo>=</mo><mo>¬</mo><mi>P</mi><mo>∧</mo><mo>¬</mo><mi>Q</mi></math>
