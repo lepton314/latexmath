@@ -74,4 +74,4 @@ def makexml(formula,parent):
             else:    
                 characters = et.SubElement(parent,'mi')
                 characters.text = element['value']
-                IVcount += 1       
+                IVcount += 1
