@@ -58,7 +58,11 @@ def makexml(formula,parent):
         elif 'greek'in element['mode']: #二項関係記号
             IVcount = 0
             symbol = et.SubElement(parent,'mo')
-            symbol.text = element['name']            
+            symbol.text = element['name']
+        elif 'arrows'in element['mode']: #二項関係記号
+            IVcount = 0
+            symbol = et.SubElement(parent,'mo')
+            symbol.text = element['name']             
         elif 'number' in element['mode']: #数字
             number = et.SubElement(parent,'mn')
             number.text = element['value']
