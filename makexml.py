@@ -16,6 +16,24 @@ def makexml(formula, parent):
             makexml(element['indexvalue1'], brakets_x)
             brakets_y = et.SubElement(underover, 'mrow')
             makexml(element['indexvalue2'], brakets_y)
+        elif 'indexkey1' in element and 'sub' == element['indexkey1'] and  'indexkey2' in element and 'sub' == element['indexkey2']:
+            subsup = et.SubElement(parent,'msubsup')
+            if 'function' == element['mode']:
+                function = et.SubElement(subsup, 'mi')
+                function.text = element['name']
+                makexml(element['indexvalue1'], subsup)
+                makexml(element['indexvalue2'],subsup)
+                Inti = et.SubElement(parent, 'mo')
+                Inti.text = '\u2062'
+            else:
+                subelement = {}
+                for key, value in element.items():
+                    if key == 'indexkey1' and  key == 'indexkey2':
+                        continue
+                    subelement[key] = value
+                makexml([subelement], subsup)
+                makexml(element['indexvalue1'], subsup)
+                makexml(element['indexvalue2'], subsup)
         elif 'indexkey1' in element and 'sub' == element['indexkey1']:
             sub = et.SubElement(parent, 'msub')
             if 'function' == element['mode']:

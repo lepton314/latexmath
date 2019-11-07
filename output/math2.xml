@@ -1,27 +1,2 @@
 <?xml version='1.0' encoding='utf-8'?>
-<math xmlns="http://www.w3.org/1998/Math/MathML">
-    <mi>f</mi>
-    <mfenced>
-        <mrow>
-            <mi>x</mi>
-        </mrow>
-    </mfenced>
-    <mo>=</mo>
-    <munderover>
-        <mo>∏            <mrow>
-                <mrow>
-                    <mi>i</mi>
-                    <mo>=</mo>
-                    <mn>0</mn>
-                </mrow>
-            </mrow>
-            <mrow>
-                <mi>n</mi>
-            </mrow>
-        </mo>
-    </munderover>
-    <msub>
-        <mi>x</mi>
-        <mi>i</mi>
-    </msub>
-</math>
+<math xmlns="http://www.w3.org/1998/Math/MathML"><mo>∫</mo><mfenced><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow></mfenced><mi>d</mi><mo>⁢</mo><mi>x</mi><mo>=</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>x</mi><mo>+</mo><mi>C</mi></math>
