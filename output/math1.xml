@@ -1,31 +1,27 @@
 <?xml version='1.0' encoding='utf-8'?>
 <math xmlns="http://www.w3.org/1998/Math/MathML">
-    <mi>x</mi>
+    <mi>f</mi>
+    <mfenced>
+        <mrow>
+            <mi>x</mi>
+        </mrow>
+    </mfenced>
     <mo>=</mo>
-    <mfrac>
-        <mrow>
-            <mo>-</mo>
-            <mi>b</mi>
-            <mo>±</mo>
-            <msqrt>
+    <munderover>
+        <mo>∑            <mrow>
                 <mrow>
-                    <msup>
-                        <mi>b</mi>
-                        <mn>2</mn>
-                    </msup>
-                    <mo>-</mo>
-                    <mn>4</mn>
-                    <mo>⁢</mo>
-                    <mi>a</mi>
-                    <mo>⁢</mo>
-                    <mi>c</mi>
+                    <mi>i</mi>
+                    <mo>=</mo>
+                    <mn>0</mn>
                 </mrow>
-            </msqrt>
-        </mrow>
-        <mrow>
-            <mn>2</mn>
-            <mo>⁢</mo>
-            <mi>a</mi>
-        </mrow>
-    </mfrac>
+            </mrow>
+            <mrow>
+                <mi>n</mi>
+            </mrow>
+        </mo>
+    </munderover>
+    <msub>
+        <mi>x</mi>
+        <mi>i</mi>
+    </msub>
 </math>

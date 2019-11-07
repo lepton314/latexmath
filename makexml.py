@@ -8,7 +8,15 @@ def makexml(formula, parent):
     global sqrtcount
     global fraccount
     for element in formula:
-        if 'indexkey1' in element and 'sub' == element['indexkey1']:
+        if 'type' in element:
+            underover = et.SubElement(parent, 'munderover')
+            underelement = et.SubElement(underover,element['tag'])
+            underelement.text = element['name']
+            brakets_x = et.SubElement(underover ,'mrow')
+            makexml(element['indexvalue1'], brakets_x)
+            brakets_y = et.SubElement(underover, 'mrow')
+            makexml(element['indexvalue2'], brakets_y)
+        elif 'indexkey1' in element and 'sub' == element['indexkey1']:
             sub = et.SubElement(parent, 'msub')
             if 'function' == element['mode']:
                 function = et.SubElement(sub, 'mi')
@@ -73,7 +81,8 @@ def makexml(formula, parent):
                 brakets = et.SubElement(mroot, 'mrow')
                 makexml(element['children'], brakets)
             elif '4' == element['tag']:
-                brakets_a = et.SubElement(parent, 'mfenced',{'open':"{"},{'close':"}"})
+                brakets_a = et.SubElement(
+                    parent, 'mfenced', {'open': "{"}, {'close': "}"})
                 brakets_b = et.SubElement(brakets_a, 'mrow')
                 makexml(element['children'], brakets_b)
         elif 'operator2' == element['mode']:  # 演算子

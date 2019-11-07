@@ -7,7 +7,7 @@ from indexformula import makeindexformula
 from makexml import makexml
 
 #ファイル読み込み
-with open('test.tex','r') as f:
+with open('input.tex','r') as f:
     raw_text = f.read()
     formulas = raw_text.split('\n')
 
