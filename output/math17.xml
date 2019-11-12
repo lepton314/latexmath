@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mfenced><mrow><mi>x</mi></mrow></mfenced><mo>=</mo><munderover><mo>∏</mo><mrow><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow></mrow><mrow><mi>n</mi></mrow></munderover><msub><mi>x</mi><mi>i</mi></msub></math>

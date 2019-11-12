@@ -28,9 +28,9 @@ for formula in fixed_formulas:
     for element in elements_with_empty:
         if len(element) > 0:
             elements.append(element)
-    #print(formula)
+    print(formula)
     #print(trimmed_formula)
-    #print(elements)
+    print(elements)
     parsed_elements = []
     for element in elements:
         parse_element(element, parsed_elements)

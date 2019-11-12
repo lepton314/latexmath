@@ -4,9 +4,9 @@ def parse_element(element, parsed_elements):
         parsed_elements.append({'mode': 'brackets1', 'name': '('})
     elif ')' == element:
         parsed_elements.append({'mode': 'brackets2', 'name': ')'})
-    elif '\{' == element:
+    elif '\\{' == element:
         parsed_elements.append({'mode': 'brackets3-v', 'name': '{'})
-    elif '\}' == element:
+    elif '\\}' == element:
         parsed_elements.append({'mode': 'brackets4-v', 'name': '}'})
     elif '{' == element:
         parsed_elements.append({'mode': 'brackets3', 'name': '{'})
