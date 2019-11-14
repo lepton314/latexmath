@@ -35,7 +35,7 @@ for formula in fixed_formulas:
     for element in elements:
         parse_element(element, parsed_elements)
     parsed_formulas.append(parsed_elements)
-    #print(parsed_formulas)
+    print(parsed_elements)
 
 
 #Subformula
