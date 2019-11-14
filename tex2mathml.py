@@ -22,7 +22,7 @@ parsed_formulas = []
 for formula in fixed_formulas:
 
     trimmed_formula = re.sub('\s','/',formula)
-    split_rule = r'(\\[A-Za-z]+|\+|-|=|\(|\)|\\?\{|\\?\}|_|\^|\[|\]|[0-9]+|[a-z])'
+    split_rule = r'(\\[A-Za-z]+|\+|-|=|\(|\)|\\?\{|\\?\}|_|\^|\[|\]|\||[0-9]+|[a-z])'
     elements_with_empty = re.sub(split_rule,r'/\1/',trimmed_formula).split('/')
     elements = []
     for element in elements_with_empty:
