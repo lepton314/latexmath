@@ -1,2 +1,2 @@
 <?xml version='1.0' encoding='utf-8'?>
-<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi><mo>∪</mo><mi>B</mi><mo>=</mo><mrow><mi>x</mi><mo>⁢</mo><mi>:</mi><mo>⁢</mo><mi>a</mi><mo>∋</mo><mi>A</mi><mo>∨</mo><mi>b</mi><mo>∋</mo><mi>B</mi></mrow></math>
+<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi><mo>∪</mo><mi>B</mi><mo>=</mo><mfenced open="{" close="}"><mrow><mi>x</mi><mo>⁢</mo><mi>:</mi><mo>⁢</mo><mi>a</mi><mo>∋</mo><mi>A</mi><mo>∨</mo><mi>b</mi><mo>∋</mo><mi>B</mi></mrow></mfenced></math>

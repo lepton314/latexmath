@@ -100,7 +100,7 @@ def makexml(formula, parent):
                 makexml(element['children'], brakets)
             elif '4' == element['tag']:
                 brakets_a = et.SubElement(
-                    parent, 'mfenced', {'open': "{"}, {'close': "}"})
+                    parent, 'mfenced', {'open': "{",'close':"}"})
                 brakets_b = et.SubElement(brakets_a, 'mrow')
                 makexml(element['children'], brakets_b)
         elif 'operator2' == element['mode']:  # 演算子
